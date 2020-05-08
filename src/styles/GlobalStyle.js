@@ -15,10 +15,22 @@ export default createGlobalStyle`
 	body {
 		width: 70%;
 		margin: 1rem auto;
-		font-family: ${props => props.theme.font};
-		background: ${props => props.theme.bg};
-		color: ${props => props.theme.color};
+		font-family: ${(props) => props.theme.font};
+		background: ${(props) => props.theme.bg};
+		color: ${(props) => props.theme.color};
 		line-height: 1.7;
+	}
+
+	body::-webkit-scrollbar {
+			width: 0.25rem;
+	}
+
+	body::-webkit-scrollbar-track {
+		background: ${(props) => props.theme.bg};
+	}
+
+	body::-webkit-scrollbar-thumb {
+		background: ${(props) => props.theme.accent};
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -28,5 +40,11 @@ export default createGlobalStyle`
 	a {
 		text-decoration: none;
 		color: inherit;
+	}
+
+	@media screen and (max-width:769px) {
+		body {
+			width: 90%;
+		}
 	}
 `;
