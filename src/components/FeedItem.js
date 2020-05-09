@@ -8,9 +8,9 @@ const FeedItem = ({ item }) => {
   const { feed } = useParams();
   const titleSlug = slugifyTitle(item.title);
 
-  const reg = /&amp;?/;
-  const title = item.title && item.title.replace(reg, "&");
-  const [author, _] = item.author && item.author.replace(reg, "&").split("-");
+  const title = item.title && item.title.replace(/&amp;?/, "&");
+  const author =
+    item.author && item.author.replace(/&amp;?/, "&").split("-")[0];
 
   return (
     <FeedCard>

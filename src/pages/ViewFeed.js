@@ -1,25 +1,39 @@
 import React from "react";
 import styled from "styled-components";
+import Player from "../components/Player";
+import { getRedditImg, getYtId } from "../utils";
 
 const Wrapper = styled.div`
-  margin-top: 1rem;
+  margin: 1rem 0;
   font-size: 1.1rem;
   width: 80%;
 
   h3 {
     margin-bottom: 0.3rem;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: ${(props) => props.theme.dark};
     font-weight: 500;
   }
 
+  img.reddit-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin: 1rem 0;
+    box-shadow: ${(props) => props.theme.bs1};
+  }
+
   .content {
     img {
-      margin: 2rem 0;
+      margin: 1.5rem 0;
       display: block;
       width: 340px;
       height: 250px;
       object-fit: cover;
+      display: none;
+    }
+    td {
+      display: block;
     }
 
     strong {
@@ -41,7 +55,7 @@ const Wrapper = styled.div`
       text-align: justify;
       text-justify: inter-word;
       margin: 0.8rem 0;
-      letter-spacing: 0.7px;
+      letter-spacing: 0.4px;
     }
 
     code {
@@ -59,6 +73,21 @@ const Wrapper = styled.div`
     }
   }
 
+  iframe {
+    margin: 1rem 0;
+    box-shadow: ${(props) => props.theme.bs1};
+  }
+
+  button {
+    padding: 0.4rem 1.2rem;
+    font-family: ${(props) => props.theme.font};
+    font-size: 1rem;
+    background: ${(props) => props.theme.accent};
+    border: 1px solid ${(props) => props.theme.accent};
+    color: ${(props) => props.theme.white};
+    border-radius: 50px;
+  }
+
   @media screen and (max-width: 1100px) {
     width: 98%;
   }
@@ -69,14 +98,52 @@ const Wrapper = styled.div`
 `;
 
 export default ({ location: { item } }) => {
-  const reg = /&amp;?/;
+  // for reddit
+  const redditFeed = item.link.includes("www.reddit.com");
+  let redditImg = "";
+  if (redditFeed) {
+    redditImg = getRedditImg(item.description);
+  }
+
+  const ytFeed = item.link.includes("youtube.com");
+  let ytId = "";
+  if (ytFeed) {
+    ytId = getYtId(item.guid);
+  }
+
   return (
     <Wrapper>
-      <h3>{item && item.title.replace(reg, "&")}</h3>
+      <h3>{item.title.replace(/&amp;?/, "&")}</h3>
+
+      {redditImg && <img className="reddit-img" src={redditImg} alt="reddit" />}
+
+      {item.enclosure &&
+        item.enclosure.type &&
+        item.enclosure.type === "audio/mpeg" && (
+          <Player url={item.enclosure.link} />
+        )}
+
       <div
         className="content"
-        dangerouslySetInnerHTML={{ __html: item && item.description }}
+        dangerouslySetInnerHTML={{ __html: item.content }}
       />
+
+      {ytId && (
+        <iframe
+          src={`https://www.youtube.com/embed/${ytId}`}
+          frameBorder="0"
+          width="100%"
+          height="400px"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          title="video"
+        />
+      )}
+      {ytId && (
+        <button>
+          <a href={item.link}>View on YouTube</a>
+        </button>
+      )}
     </Wrapper>
   );
 };

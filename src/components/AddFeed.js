@@ -46,7 +46,7 @@ const Wrapper = styled.div`
 const AddFeed = () => {
   const title = useInput("");
   const url = useInput("");
-  const { userFeeds, setUserFeeds } = useContext(FeedContext);
+  const { setUserFeeds } = useContext(FeedContext);
 
   const handleAddFeed = (e) => {
     e.preventDefault();

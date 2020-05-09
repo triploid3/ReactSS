@@ -14,7 +14,7 @@ export default createGlobalStyle`
 
 	body {
 		width: 70%;
-		margin: 1rem auto;
+		margin: 1rem auto 2rem auto;
 		font-family: ${(props) => props.theme.font};
 		background: ${(props) => props.theme.bg};
 		color: ${(props) => props.theme.color};
@@ -42,7 +42,7 @@ export default createGlobalStyle`
 		color: inherit;
 	}
 
-	ul {
+	li {
 		list-style-type: none;
 	}
 

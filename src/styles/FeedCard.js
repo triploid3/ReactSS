@@ -20,6 +20,22 @@ export default styled.div`
     fill: ${(props) => props.theme.accent};
   }
 
+  div.title-trash {
+    display: flex;
+
+    svg {
+      height: 20px;
+      width: 20px;
+      margin-left: 0.5rem;
+      position: relative;
+      top: 5px;
+    }
+
+    svg:hover {
+      fill: ${(props) => props.theme.red};
+    }
+  }
+
   div.feed-info {
     display: flex;
 

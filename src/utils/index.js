@@ -25,6 +25,7 @@ export const slugifyTitle = (name) => {
       ch !== "]" &&
       ch !== "|" &&
       ch !== "+" &&
+      ch !== "?" &&
       ch !== "," &&
       ch !== "["
     ) {
@@ -68,3 +69,13 @@ export const timeSince = (timestamp) => {
 
   return Math.floor(seconds) + " seconds";
 };
+
+export const getRedditImg = (description) => {
+  const pngRegex = /(https?:\/\/i\.redd\.it.*\.(?:png|jpg|gif))/;
+  const match = description.match(pngRegex);
+  const redditImg = match && match.length && match[0];
+
+  return redditImg;
+};
+
+export const getYtId = (guid) => guid.split(":")[2];
