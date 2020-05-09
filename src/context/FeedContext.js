@@ -1,10 +1,10 @@
 import React, { createContext, useState } from "react";
-import { userfeeds } from "../data";
 
 export const FeedContext = createContext(null);
 
 export const FeedProvider = ({ children }) => {
-  const [userFeeds, setUserFeeds] = useState(userfeeds);
+  const localSt = JSON.parse(localStorage.getItem("userFeeds"));
+  const [userFeeds, setUserFeeds] = useState(localSt ? localSt : []);
 
   return (
     <FeedContext.Provider value={{ userFeeds, setUserFeeds }}>

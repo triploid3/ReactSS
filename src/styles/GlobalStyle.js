@@ -42,9 +42,12 @@ export default createGlobalStyle`
 		color: inherit;
 	}
 
-
 	ul {
 		list-style-type: none;
+	}
+
+  input:focus, textarea:focus, button:focus {
+		outline: none;
 	}
 
 	@media screen and (max-width:769px) {

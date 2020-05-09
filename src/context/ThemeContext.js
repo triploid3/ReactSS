@@ -1,10 +1,14 @@
 import React, { createContext, useState } from "react";
-import { darkTheme } from "../styles/theme";
+import { lightTheme, darkTheme } from "../styles/theme";
 
 export const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(darkTheme);
+  const localSt = localStorage.getItem("themePref");
+
+  const [theme, setTheme] = useState(
+    localSt === "dark" ? darkTheme : lightTheme
+  );
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>

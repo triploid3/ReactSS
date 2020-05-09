@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   margin-top: 1rem;
   font-size: 1.1rem;
+  width: 80%;
 
   h3 {
     margin-bottom: 0.3rem;
@@ -68,9 +69,10 @@ const Wrapper = styled.div`
 `;
 
 export default ({ location: { item } }) => {
+  const reg = /&amp;?/;
   return (
     <Wrapper>
-      <h3>{item && item.title.replace("&amp;", "&amp")}</h3>
+      <h3>{item && item.title.replace(reg, "&")}</h3>
       <div
         className="content"
         dangerouslySetInnerHTML={{ __html: item && item.description }}

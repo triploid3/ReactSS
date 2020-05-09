@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { FeedContext } from "../context/FeedContext";
 import FeedList from "../components/FeedList";
+import AddFeed from "../components/AddFeed";
 
 const Home = () => {
   const { userFeeds } = useContext(FeedContext);
@@ -19,10 +20,17 @@ const Home = () => {
   };
 
   useEffect(() => {
+    setFeeds([]);
     urls.forEach((url, index) => getFeeds(url, index));
-  }, []);
+    localStorage.setItem("userFeeds", JSON.stringify(userFeeds));
+  }, [userFeeds]);
 
-  return <FeedList feeds={feeds} />;
+  return (
+    <>
+      <AddFeed />
+      <FeedList feeds={feeds} />
+    </>
+  );
 };
 
 export default Home;

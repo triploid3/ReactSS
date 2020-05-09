@@ -15,6 +15,7 @@ export const darkTheme = {
   accent: "#D53F8C",
   dark: "#FFF",
   light: "#718096",
+  white: "#FFF",
   font: "Poppins",
   bs1: "0px 1px 3px rgba(0,0,0,0.25)",
   black: "#1C232F",
