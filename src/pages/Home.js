@@ -4,6 +4,8 @@ import { FeedContext } from "../context/FeedContext";
 import FeedList from "../components/FeedList";
 import AddFeed from "../components/AddFeed";
 import { API_KEY, COUNT } from "../config";
+import Header from "../components/Header";
+import NoFeeds from "../components/NoFeeds";
 
 const Home = () => {
   const { userFeeds } = useContext(FeedContext);
@@ -14,7 +16,6 @@ const Home = () => {
     (userFeed) =>
       `http://api.rss2json.com/v1/api.json?rss_url=${userFeed.url}&api_key=${API_KEY}&count=${COUNT}`
   );
-  console.log(urls);
 
   const getFeeds = async (url, index) => {
     const { data } = await axios.get(url);
@@ -29,10 +30,11 @@ const Home = () => {
   }, [userFeeds]);
 
   return (
-    <>
-      <AddFeed />
-      <FeedList feeds={feeds} />
-    </>
+    <div>
+      <Header />
+      <span className="tag">One Tab To Rule Them All 🔥</span>
+      {!feeds.length ? <NoFeeds /> : <FeedList feeds={feeds} />}
+    </div>
   );
 };
 

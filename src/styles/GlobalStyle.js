@@ -13,8 +13,8 @@ export default createGlobalStyle`
 	}
 
 	body {
-		width: 70%;
-		margin: 1rem auto 2rem auto;
+		margin: 1rem 1rem 1rem 0;
+		margin-left: 10%;
 		font-family: ${(props) => props.theme.font};
 		background: ${(props) => props.theme.bg};
 		color: ${(props) => props.theme.color};
@@ -46,19 +46,22 @@ export default createGlobalStyle`
 		list-style-type: none;
 	}
 
+	.tag {
+		display: block;
+		text-transform: uppercase;
+		color: ${(props) => props.theme.light};
+		letter-spacing: 1px;
+		margin-bottom: 1.5rem;
+	}
+
   input:focus, textarea:focus, button:focus {
 		outline: none;
 	}
 
-	@media screen and (max-width:769px) {
-		body {
-			width: 90%;
-		}
+@media screen and (max-width: 530px) {
+	body {
+		margin-left: 3%;
+		font-size: 0.95rem;
 	}
-
-	@media screen and (max-width:530px) {
-		body {
-			font-size: 0.98rem;
-		}
-	}
+}
 `;

@@ -9,7 +9,7 @@ export default styled.div`
   padding: 1rem;
   box-shadow: ${(props) => props.theme.bs1};
   border-radius: 4px;
-  width: 74%;
+  width: 90%;
 
   p,
   span {
@@ -24,11 +24,12 @@ export default styled.div`
     display: flex;
 
     svg {
-      height: 20px;
-      width: 20px;
+      height: 18px;
+      width: 18px;
       margin-left: 0.5rem;
       position: relative;
-      top: 5px;
+      top: 6px;
+      fill: ${(props) => props.theme.light};
     }
 
     svg:hover {
@@ -44,11 +45,7 @@ export default styled.div`
     }
   }
 
-  @media screen and (max-width: 1100px) {
+  @media screen and (max-width: 530px) {
     width: 98%;
-  }
-
-  @media screen and (max-width: 769px) {
-    width: 93%;
   }
 `;

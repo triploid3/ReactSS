@@ -22,6 +22,7 @@ export const slugifyTitle = (name) => {
       ch !== ")" &&
       ch !== "(" &&
       ch !== "!" &&
+      ch !== "/" &&
       ch !== "]" &&
       ch !== "|" &&
       ch !== "+" &&

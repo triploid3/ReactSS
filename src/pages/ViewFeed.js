@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import Player from "../components/Player";
 import { getRedditImg, getYtId } from "../utils";
+import Header from "../components/Header";
 
 const Wrapper = styled.div`
   margin: 1rem 0;
-  font-size: 1.1rem;
-  width: 80%;
+  width: 95%;
 
   h3 {
     margin-bottom: 0.3rem;
-    font-size: 1.5rem;
     color: ${(props) => props.theme.dark};
     font-weight: 500;
   }
@@ -46,7 +45,6 @@ const Wrapper = styled.div`
 
     h2 {
       margin: 0.8rem 0;
-      font-size: 1.3rem;
       color: ${(props) => props.theme.dark};
       font-weight: 500;
     }
@@ -81,19 +79,10 @@ const Wrapper = styled.div`
   button {
     padding: 0.4rem 1.2rem;
     font-family: ${(props) => props.theme.font};
-    font-size: 1rem;
     background: ${(props) => props.theme.accent};
     border: 1px solid ${(props) => props.theme.accent};
     color: ${(props) => props.theme.white};
     border-radius: 50px;
-  }
-
-  @media screen and (max-width: 1100px) {
-    width: 98%;
-  }
-
-  @media screen and (max-width: 769px) {
-    width: 93%;
   }
 `;
 
@@ -112,38 +101,44 @@ export default ({ location: { item } }) => {
   }
 
   return (
-    <Wrapper>
-      <h3>{item.title.replace(/&amp;?/, "&")}</h3>
+    <div>
+      <Header />
+      <span className="tag">One Tab To Rule Them All 🔥</span>
+      <Wrapper>
+        <h3>{item.title.replace(/&amp;?/, "&")}</h3>
 
-      {redditImg && <img className="reddit-img" src={redditImg} alt="reddit" />}
-
-      {item.enclosure &&
-        item.enclosure.type &&
-        item.enclosure.type === "audio/mpeg" && (
-          <Player url={item.enclosure.link} />
+        {redditImg && (
+          <img className="reddit-img" src={redditImg} alt="reddit" />
         )}
 
-      <div
-        className="content"
-        dangerouslySetInnerHTML={{ __html: item.content }}
-      />
+        {item.enclosure &&
+          item.enclosure.type &&
+          item.enclosure.type === "audio/mpeg" && (
+            <Player url={item.enclosure.link} />
+          )}
 
-      {ytId && (
-        <iframe
-          src={`https://www.youtube.com/embed/${ytId}`}
-          frameBorder="0"
-          width="100%"
-          height="400px"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          title="video"
+        <div
+          className="content"
+          dangerouslySetInnerHTML={{ __html: item.content }}
         />
-      )}
-      {ytId && (
-        <button>
-          <a href={item.link}>View on YouTube</a>
-        </button>
-      )}
-    </Wrapper>
+
+        {ytId && (
+          <iframe
+            src={`https://www.youtube.com/embed/${ytId}`}
+            frameBorder="0"
+            width="100%"
+            height="400px"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+            title="video"
+          />
+        )}
+        {ytId && (
+          <button>
+            <a href={item.link}>View on YouTube</a>
+          </button>
+        )}
+      </Wrapper>
+    </div>
   );
 };

@@ -8,8 +8,9 @@ const Wrapper = styled.div`
   padding: 1rem;
   box-shadow: ${(props) => props.theme.bs1};
   background: ${(props) => props.theme.black};
-  width: 400px;
-  margin: 2rem 0;
+  height: 110px;
+  width: 390px;
+  margin: 1rem 0;
 
   form {
     display: flex;

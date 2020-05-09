@@ -5,6 +5,7 @@ import FeedItem from "../components/FeedItem";
 import { FeedContext } from "../context/FeedContext";
 import { slugify } from "../utils";
 import { API_KEY, COUNT } from "../config";
+import Header from "../components/Header";
 
 const Feed = () => {
   const [items, setItems] = useState([]);
@@ -26,15 +27,18 @@ const Feed = () => {
   };
 
   useEffect(() => {
+    if (!match.length) return null;
     getFeedItems();
   }, []);
 
   return (
-    <>
+    <div>
+      <Header />
+      <span className="tag">One Tab To Rule Them All 🔥</span>
       {items && items.length
         ? items.map((item) => <FeedItem key={item.title} item={item} />)
         : null}
-    </>
+    </div>
   );
 };
 
