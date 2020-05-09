@@ -1,6 +1,5 @@
 import React, { createContext, useState } from "react";
 import { userfeeds } from "../data";
-import { slugify } from "../utils";
 
 export const FeedContext = createContext(null);
 

@@ -1,50 +1,31 @@
 import React from "react";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { LinkIcon } from "./Icons";
+import { slugify } from "../utils";
+import FeedCard from "../styles/FeedCard";
 
-const StyledFeed = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1rem 0;
-  background: ${(props) => props.theme.black};
-  padding: 1rem;
-  box-shadow: ${(props) => props.theme.bs1};
-  border-radius: 4px;
-  width: 74%;
+const Feed = ({ feed: { items, feed, meta } }) => {
+  const slug = slugify(meta.title);
 
-  p {
-    color: ${(props) => props.theme.light};
-  }
-
-  svg {
-    fill: ${(props) => props.theme.accent};
-  }
-
-  @media screen and (max-width: 1100px) {
-    width: 98%;
-  }
-
-  @media screen and (max-width: 769px) {
-    width: 93%;
-  }
-`;
-
-const Feed = ({ feed: { feed, meta } }) => {
   return (
-    <StyledFeed>
-      <div>
+    <FeedCard>
+      <Link
+        to={{
+          pathname: `/${slug}`,
+          items,
+        }}
+      >
         <h3>{meta.title}</h3>
         <p>
           {feed.description
             ? feed.description.substr(0, 70) + "..."
             : "No Description"}
         </p>
-      </div>
+      </Link>
       <a href={feed.link} target="_blank" rel="noopener noreferrer">
         <LinkIcon />
       </a>
-    </StyledFeed>
+    </FeedCard>
   );
 };
 

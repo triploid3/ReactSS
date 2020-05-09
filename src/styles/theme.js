@@ -1,7 +1,7 @@
-export default {
+export const lightTheme = {
   bg: "#FFF",
   color: "#0C344B",
-  accent: "#48BB78",
+  accent: "#D53F8C",
   dark: "#082333",
   light: "#8FA6B2",
   white: "#FFF",
@@ -13,7 +13,7 @@ export const darkTheme = {
   bg: "#1A202C",
   color: "#FFF",
   accent: "#D53F8C",
-  dark: "#082333",
+  dark: "#FFF",
   light: "#718096",
   font: "Poppins",
   bs1: "0px 1px 3px rgba(0,0,0,0.25)",

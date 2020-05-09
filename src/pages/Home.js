@@ -20,7 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     urls.forEach((url, index) => getFeeds(url, index));
-  }, [userFeeds]);
+  }, []);
 
   return <FeedList feeds={feeds} />;
 };

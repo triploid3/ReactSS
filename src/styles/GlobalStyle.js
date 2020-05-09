@@ -42,9 +42,20 @@ export default createGlobalStyle`
 		color: inherit;
 	}
 
+
+	ul {
+		list-style-type: none;
+	}
+
 	@media screen and (max-width:769px) {
 		body {
 			width: 90%;
+		}
+	}
+
+	@media screen and (max-width:530px) {
+		body {
+			font-size: 0.98rem;
 		}
 	}
 `;
