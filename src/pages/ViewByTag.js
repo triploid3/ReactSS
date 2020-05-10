@@ -10,6 +10,8 @@ import NoFeeds from "../components/NoFeeds";
 
 export default () => {
   const { tag } = useParams();
+  console.log(tag);
+
   const { userFeeds } = useContext(FeedContext);
 
   const [feeds, setFeeds] = useState([]);
@@ -30,7 +32,7 @@ export default () => {
   useEffect(() => {
     setFeeds([]);
     urls.forEach((url, index) => getFeeds(url, index));
-  }, [userFeeds]);
+  }, [userFeeds, tag]);
 
   return (
     <div>

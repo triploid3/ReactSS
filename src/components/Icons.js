@@ -89,3 +89,14 @@ export const LightningIcon = () => (
     <path d="M8 24l3-9h-9l14-15-3 9h9l-14 15z" />
   </svg>
 );
+
+export const AddFileIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path d="M16 0h-14v24h20v-18l-6-6zm0 3l3 3h-3v-3zm-12 19v-20h10v6h6v14h-16z" />
+  </svg>
+);

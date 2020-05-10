@@ -76,21 +76,21 @@ const AddFeed = () => {
         <div>
           <input
             type="text"
-            placeholder="Wes Bos YT"
+            placeholder="Prisma"
             value={title.value}
             onChange={title.onChange}
             required={true}
           />
           <input
             type="url"
-            placeholder="https://youtube.com/id=879821"
+            placeholder="https://www.prisma.io/blog/rss.xml"
             value={url.value}
             onChange={url.onChange}
             required={true}
           />
           <input
             type="text"
-            placeholder="Youtube, WesBos, React"
+            placeholder="GraphQL, Blogs"
             value={tags.value}
             onChange={tags.onChange}
           />

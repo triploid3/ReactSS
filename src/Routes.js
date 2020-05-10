@@ -7,6 +7,7 @@ import Feed from "./pages/Feed";
 import ViewFeed from "./pages/ViewFeed";
 import ViewByTag from "./pages/ViewByTag";
 import AddFeed from "./components/AddFeed";
+import AddFeedJson from "./components/AddFeedJson";
 import Layout from "./styles/Layout";
 
 const SideBar = styled.div`
@@ -26,6 +27,7 @@ export default () => (
       </Switch>
       <SideBar>
         <AddFeed />
+        <AddFeedJson />
         <Tags />
       </SideBar>
     </Layout>
