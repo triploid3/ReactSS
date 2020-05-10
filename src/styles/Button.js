@@ -13,6 +13,7 @@ export default styled.button`
   letter-spacing: 1px;
   cursor: pointer;
   box-shadow: ${(props) => props.theme.bs1};
+  margin-top: 1rem;
 
   svg {
     position: relative;

@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { FeedContext } from "../context/FeedContext";
 import FeedList from "../components/FeedList";
-import AddFeed from "../components/AddFeed";
 import { API_KEY, COUNT } from "../config";
 import Header from "../components/Header";
 import NoFeeds from "../components/NoFeeds";
@@ -32,7 +31,6 @@ const Home = () => {
   return (
     <div>
       <Header />
-      <span className="tag">One Tab To Rule Them All 🔥</span>
       {!urls.length ? <NoFeeds /> : <FeedList feeds={feeds} />}
     </div>
   );

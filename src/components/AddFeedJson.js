@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import useInput from "../hooks/useInput";
-import { AddFileIcon, LeftArrow } from "./Icons";
+import { AddFileIcon } from "./Icons";
 import { FeedContext } from "../context/FeedContext";
 
 const Wrapper = styled.div`

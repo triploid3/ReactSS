@@ -30,7 +30,7 @@ const Tags = () => {
     <Wrapper>
       {tags.length
         ? tags.map((tag) => (
-            <Link to={`/tags/${tag}`}>
+            <Link key={tag} to={`/tags/${tag}`}>
               <h3>
                 <LightningIcon />
                 {tag}

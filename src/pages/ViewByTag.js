@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { FeedContext } from "../context/FeedContext";
 import FeedList from "../components/FeedList";
-import AddFeed from "../components/AddFeed";
 import { API_KEY, COUNT } from "../config";
 import Header from "../components/Header";
 import NoFeeds from "../components/NoFeeds";
@@ -37,7 +36,6 @@ export default () => {
   return (
     <div>
       <Header />
-      <span className="tag">One Tab To Rule Them All 🔥</span>
       {!urls.length ? <NoFeeds /> : <FeedList feeds={feeds} />}
     </div>
   );

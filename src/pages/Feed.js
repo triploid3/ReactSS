@@ -34,7 +34,6 @@ const Feed = () => {
   return (
     <div>
       <Header />
-      <span className="tag">One Tab To Rule Them All 🔥</span>
       {items && items.length
         ? items.map((item) => <FeedItem key={item.title} item={item} />)
         : null}

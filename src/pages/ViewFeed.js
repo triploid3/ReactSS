@@ -5,7 +5,7 @@ import { getTwitterImg, getRedditImg, getYtId } from "../utils";
 import Header from "../components/Header";
 import Content from "../styles/Content";
 import Button from "../styles/Button";
-import { LeftArrow } from "../components/Icons";
+import { LeftArrow, MagnetIcon } from "../components/Icons";
 
 const Wrapper = styled.div`
   margin: 1rem 0;
@@ -51,10 +51,14 @@ export default ({ location: { item } }) => {
     twitterImg = getTwitterImg(item.description);
   }
 
+  const torrentFeed =
+    item.enclosure &&
+    item.enclosure.link &&
+    item.enclosure.link.includes("magnet");
+
   return (
     <div>
       <Header />
-      <span className="tag">One Tab To Rule Them All 🔥</span>
       <Wrapper>
         {!twitterFeed && <h3>{item.title.replace(/&amp;?/, "&")}</h3>}
 
@@ -76,6 +80,14 @@ export default ({ location: { item } }) => {
           className="content"
           dangerouslySetInnerHTML={{ __html: item.content }}
         />
+
+        {torrentFeed && (
+          <Button>
+            <a href={item.enclosure && item.enclosure.link}>
+              Download <MagnetIcon />
+            </a>
+          </Button>
+        )}
 
         {ytId && (
           <iframe
