@@ -72,11 +72,19 @@ export const timeSince = (timestamp) => {
 };
 
 export const getRedditImg = (description) => {
-  const pngRegex = /(https?:\/\/i\.redd\.it.*\.(?:png|jpg|gif))/;
-  const match = description.match(pngRegex);
+  const imgRegex = /(https?:\/\/i\.redd\.it.*\.(?:png|jpg|gif))/;
+  const match = description.match(imgRegex);
   const redditImg = match && match.length && match[0];
 
   return redditImg;
+};
+
+export const getTwitterImg = (description) => {
+  const imgRegex = /(https?:\/\/pbs\.twimg\.com.*\.(?:png|jpg|gif))/;
+  const match = description.match(imgRegex);
+  const twitterImg = match && match.length && match[0];
+
+  return twitterImg;
 };
 
 export const getYtId = (guid) => guid.split(":")[2];

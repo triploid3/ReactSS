@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   padding: 1rem;
   box-shadow: ${(props) => props.theme.bs1};
   background: ${(props) => props.theme.black};
-  height: 110px;
+  height: 140px;
   width: 390px;
   margin: 1rem 0;
 
@@ -47,18 +47,27 @@ const Wrapper = styled.div`
 const AddFeed = () => {
   const title = useInput("");
   const url = useInput("");
+  const tags = useInput("");
   const { setUserFeeds } = useContext(FeedContext);
 
   const handleAddFeed = (e) => {
     e.preventDefault();
 
+    let tagList = tags.value ? tags.value.split(",") : [];
+    tagList = tagList.map((tag) => tag.trim());
+
     setUserFeeds((userFeeds) => [
       ...userFeeds,
-      { title: title.value, url: url.value },
+      {
+        title: title.value.trim(),
+        url: url.value.trim(),
+        tags: tagList,
+      },
     ]);
 
     title.setValue("");
     url.setValue("");
+    tags.setValue("");
   };
 
   return (
@@ -78,6 +87,12 @@ const AddFeed = () => {
             value={url.value}
             onChange={url.onChange}
             required={true}
+          />
+          <input
+            type="text"
+            placeholder="Youtube, WesBos, React"
+            value={tags.value}
+            onChange={tags.onChange}
           />
         </div>
         <button>

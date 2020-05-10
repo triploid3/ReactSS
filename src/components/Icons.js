@@ -67,3 +67,25 @@ export const TrashIcon = ({ onClick }) => (
     </g>
   </svg>
 );
+
+export const LeftArrow = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+  </svg>
+);
+
+export const LightningIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <path d="M8 24l3-9h-9l14-15-3 9h9l-14 15z" />
+  </svg>
+);

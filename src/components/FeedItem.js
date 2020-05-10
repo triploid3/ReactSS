@@ -8,9 +8,14 @@ const FeedItem = ({ item }) => {
   const { feed } = useParams();
   const titleSlug = slugifyTitle(item.title);
 
-  const title = item.title && item.title.replace(/&amp;?/, "&");
+  let title = item.title && item.title.replace(/&amp;?/, "&");
   const author =
     item.author && item.author.replace(/&amp;?/, "&").split("-")[0];
+
+  // for twitter feed items
+  if (item.guid && item.guid.includes("twitter.com")) {
+    title = title.substr(0, 80) + "...";
+  }
 
   return (
     <FeedCard>
